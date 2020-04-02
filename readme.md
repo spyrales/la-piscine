@@ -46,7 +46,48 @@ Pour celles et ceux qui sont à l'aise, vous pouvez faire une _pull request_ dan
 
 Vous pouvez partager ce que vous avez laissé en cours de route et pourquoi (temps, difficulté...).
 
-
 Pour publier ses réalisations, il convient de réaliser les actions suivantes.
 
-(à venir)
+* avoir un compte GitHub
+
+Cliquer sur `sign in`.
+
+* forker le projet *la piscine*
+
+Pour ce faire, il faut cliquer sur le bouton `fork` en haut à droite de l'interface de GitHub et de choisir votre compte GitHub.
+
+* copier en local votre fork
+
+Deux commandes suffisent (la première pour copier, la seconde pour ajouter la référence au projet) : 
+```
+git clone https://github.com/<votre compte>la-piscine.git
+git remote add upstream https://github.com/spyrales/la-piscine.git
+```
+
+* créer une *branche*
+
+Vous devez choisir un nom pour votre branche, idéalement un terme pour s'y retrouver simplement. Evitons les espaces et autres caractères spéciaux.
+
+```
+git checkout -b nom_de_ma_branche
+```
+
+* copier une réalisation dans le répertoire correspondant
+
+Exemple : réalisation d'une carte avec les données du COVID_19.
+Les programmes en R ou en Python, ainsi que le résultat, sont à copier dans un répertoire par personne, comme `str-carte` (str pour les initiales et carte pour son nom) (évitons de nouveau les caractes spéciaux).
+
+```
+cp -a -r monrepertoire/macarte/* 20200402-COVID19/str-carte
+git add 20200402-COVID19/str-carte
+git commit -m 'ajout carte COVID - str'
+git push --set-upstream origin nom_de_ma_branche
+```
+
+(saisir ses crendentials GitHub si demandé)
+
+* faire une *pull request*
+
+Revenir sur la page de *la piscine*. L'interface doit afficher automatiquement votre branche pour faire une *pull request*. Cliquer sur le bouton *create pull request*. Vérifier qu'il n'y a pas d'incompatibilité et cliquer sur *create*.
+
+Voilà c'est terminé ; votre réalisation a été transférée et un gestionnaire de *la piscine* la validera très vite.
