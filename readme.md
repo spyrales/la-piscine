@@ -56,7 +56,7 @@ Cliquer sur `sign in`.
 
 Pour ce faire, il faut cliquer sur le bouton `fork` en haut à droite de l'interface de GitHub et de choisir votre compte GitHub.
 
-* copier en local votre fork
+* copier en local votre *fork*
 
 Deux commandes suffisent (la première pour copier, la seconde pour ajouter la référence au projet) : 
 ```
@@ -88,6 +88,6 @@ git push --set-upstream origin nom_de_ma_branche
 
 * faire une *pull request*
 
-Revenir sur la page de *la piscine*. L'interface doit afficher automatiquement votre branche pour faire une *pull request*. Cliquer sur le bouton *create pull request*. Vérifier qu'il n'y a pas d'incompatibilité et cliquer sur *create*.
+Revenir sur la page de *la piscine*. L'interface doit afficher automatiquement votre branche `identifiant:nom_de_ma_branche` pour faire une *pull request*. Cliquer sur le bouton *compare & pull request*. Vérifier qu'il n'y a pas d'incompatibilité (il est alors affiché *able to merge*), modifier si besoin le titre de votre *pull request* et cliquer enfin sur *create pull request*.
 
 Voilà c'est terminé ; votre réalisation a été transférée et un gestionnaire de *la piscine* la validera très vite.
