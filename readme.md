@@ -66,7 +66,7 @@ C'est sur ce projet que vous devez d'abord copier votre réalisation.
 
 Deux commandes suffisent (la première pour copier, la seconde pour ajouter la référence au projet) : 
 ```
-git clone https://github.com/<votre compte>la-piscine.git
+git clone https://github.com/<votre compte>/la-piscine.git
 git remote add upstream https://github.com/spyrales/la-piscine.git
 ```
 
