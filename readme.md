@@ -40,7 +40,9 @@ Pour avoir de l'aide, demandez sur le salon **spyrales** de Tchap !
 
 Vous pouvez partager vos scripts (python ou R), vos notebooks ou documents R Markdown.
 
-Pour celles et ceux qui sont à l'aise, vous pouvez faire une _pull request_ dans [spyrales/la-piscine](https://github.com/spyrales/la-piscine/). Pour les autres, vous pouvez les poster dans le salon **spyrales** de Tchap ou les envoyer par mail.
+Pour celles et ceux qui sont à l'aise, vous pouvez faire une _pull request_ dans 
+[spyrales/la-piscine](https://github.com/spyrales/la-piscine/).
+Pour les autres, vous pouvez les poster dans le salon **spyrales** de Tchap ou les envoyer par mail.
 
 ## Le vestiaire 
 
@@ -50,11 +52,15 @@ Pour publier ses réalisations, il convient de réaliser les actions suivantes.
 
 * avoir un compte GitHub
 
-Cliquer sur `sign in`.
+Aller sur le site [GitHub](https://github.com) et cliquer sur `sign up`.
+Suivre les instructions. Cela prend une à deux minutes maximum.
 
 * forker le projet *la piscine*
 
-Pour ce faire, il faut cliquer sur le bouton `fork` en haut à droite de l'interface de GitHub et de choisir votre compte GitHub.
+Aller sur la page de [*la piscine*](https://github.com/spyrales/la-piscine/),
+cliquer sur le bouton `fork` en haut à droite de l'interface de GitHub et choisir votre compte GitHub.
+Vous avez maintenant une copie du projet *la piscine* dans votre espace.
+C'est sur ce projet que vous devez d'abord copier votre réalisation.
 
 * copier en local votre *fork*
 
@@ -66,7 +72,8 @@ git remote add upstream https://github.com/spyrales/la-piscine.git
 
 * créer une *branche*
 
-Vous devez choisir un nom pour votre branche, idéalement un terme pour s'y retrouver simplement. Evitons les espaces et autres caractères spéciaux.
+Choisir un nom pour votre branche, idéalement un terme pour s'y retrouver simplement.
+Evitons les espaces et autres caractères spéciaux.
 
 ```
 git checkout -b nom_de_ma_branche
@@ -75,7 +82,9 @@ git checkout -b nom_de_ma_branche
 * copier une réalisation dans le répertoire correspondant
 
 Exemple : réalisation d'une carte avec les données du COVID_19.
-Les programmes en R ou en Python, ainsi que le résultat, sont à copier dans un répertoire par personne, comme `str-carte` (str pour les initiales et carte pour son nom) (évitons de nouveau les caractes spéciaux).
+Les programmes en R ou en Python, ainsi que le résultat, sont à copier dans un 
+répertoire par personne, comme `str-carte` (str pour les initiales et carte pour son nom)
+(évitons de nouveau les caractes spéciaux).
 
 ```
 cp -a -r monrepertoire/macarte/* 20200402-COVID19/str-carte
@@ -88,6 +97,11 @@ git push --set-upstream origin nom_de_ma_branche
 
 * faire une *pull request*
 
-Revenir sur la page de *la piscine*. L'interface doit afficher automatiquement votre branche `identifiant:nom_de_ma_branche` pour faire une *pull request*. Cliquer sur le bouton *compare & pull request*. Vérifier qu'il n'y a pas d'incompatibilité (il est alors affiché *able to merge*), modifier si besoin le titre de votre *pull request* et cliquer enfin sur *create pull request*.
+Revenir sur la page de *la piscine*. L'interface doit afficher automatiquement 
+votre branche `identifiant:nom_de_ma_branche` pour faire une *pull request*.
+Cliquer sur le bouton *compare & pull request*. Vérifier qu'il n'y a pas 
+d'incompatibilité (il est alors affiché *able to merge*), modifier si besoin 
+le titre de votre *pull request* et cliquer enfin sur *create pull request*.
 
-Voilà c'est terminé ; votre réalisation a été transférée et un gestionnaire de *la piscine* la validera très vite.
+Voilà c'est terminé ; votre réalisation a été transférée et 
+un gestionnaire de *la piscine* la validera très vite.
