@@ -83,7 +83,8 @@ git checkout -b nom_de_ma_branche
 
 Exemple : réalisation d'une carte avec les données du COVID_19.
 Les programmes en R ou en Python, ainsi que le résultat, sont à copier dans un 
-répertoire par personne, comme `str-carte` (str pour les initiales et carte pour son nom)
+répertoire par personne, comme `str-carte` (str pour vos initiales et carte pour le nom
+de votre carte)
 (évitons de nouveau les caractes spéciaux).
 
 ```
