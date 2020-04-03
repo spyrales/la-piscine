@@ -104,5 +104,14 @@ Cliquer sur le bouton *compare & pull request*. Vérifier qu'il n'y a pas
 d'incompatibilité (il est alors affiché *able to merge*), modifier si besoin 
 le titre de votre *pull request* et cliquer enfin sur *create pull request*.
 
-Voilà c'est terminé ; votre réalisation a été transférée et 
+Voilà votre réalisation a été proposée pour publication et 
 un gestionnaire de *la piscine* la validera très vite.
+
+* supprimer sa branche
+
+Une fois validée par un gestionnaire, votre réalisation est intégrée dans *la piscine*.
+Votre branche *nom_de_ma_branche* n'est plus utile. Vous pouvez la supprimer via l'interface de GitHub, 
+sur la page de votre *fork*, en cliquant sur *branch*, ensuite sur la ligne correspondante
+(nom_de_ma_branche), cliquer sur l'icone *poubelle*.
+
+Voilà c'est (maintenant) terminé. Bravo !
