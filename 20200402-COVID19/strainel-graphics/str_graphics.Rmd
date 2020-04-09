@@ -1,0 +1,118 @@
+---
+title: "Quelques graphiques à partir des données COVID19 publiée par CSSEDISandData"
+author: "Stéphane Trainel"
+date: "4/9/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Les bibliotèques
+
+Deux bibliothèqes sont nécessaires : `tidyverse` pour la gestion des données et `highcharter` pour faire de jolis graphiques.
+
+```{r prerequis, message=FALSE}
+library(tidyverse)
+library(highcharter)
+```
+
+## Le chargement des données
+
+Deux données sont nécessaires : celui des cas avérés et celui des décès. Les données étant publiées séparemment, il faut donc les télécharger l'un après l'autre.
+
+```{r getdata , message=FALSE}
+covid_deces <- read_csv ("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv")
+covid_cas <- read_csv ("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv")
+```
+
+## Le traitement des données
+
+Dans les deux jeux de données, il y a les statistiques de tous les pays. Il faut donc filtrer celles de la France. Et il n'y a pas qu'une seule ligne. Il y a les informations de la métropole et de chaque DOM. Dans notre exemple, nous allons donc faire une somme pour avoir le nombre de cas et de décès pour l'ensemble du territoire national.
+
+D'abord le fichier des décès.
+
+```{r traitdeces}
+covid_deces <- covid_deces %>%
+  rename('Pays' = 'Country/Region') %>%
+  filter(Pays == 'France') %>%
+  select(-Long,-Lat,-Pays) %>%
+  summarise_if(is.numeric, sum, na.rm = TRUE)  %>% 
+  rownames_to_column %>%
+  gather(date, value, -rowname) %>% 
+  spread(rowname, value)
+colnames(covid_deces) <- c('date','deces')
+```
+
+Et on fait la même chose avec le fichier des cas avérés.
+
+```{r traitcas}
+covid_cas <- covid_cas %>%
+  rename('Pays' = 'Country/Region') %>%
+  filter(Pays == 'France') %>%
+  select(-Long,-Lat,-Pays) %>%
+  summarise_if(is.numeric, sum, na.rm = TRUE)  %>% 
+  rownames_to_column %>%
+  gather(date, value, -rowname) %>% 
+  spread(rowname, value)
+colnames(covid_cas) <- c('date','cas')
+```
+
+Ensuite nous allons assembler les deux fichiers en un seul, convertir la date dans un format plus lisible (ie AAAA-MM-DD) et le trier. Le tri est important pour afficher les données dans le "bon ordre".
+
+```{r merge}
+# Concaténation des deux données, conversion de la date et tri
+covid <- merge(covid_cas, covid_deces, by = "date")
+covid$date <- as.Date(covid$date, format = "%m/%d/%y")
+covid <- covid[order(covid$date),]
+```
+
+## Un premier graphique : évolution des cas avérés et des décès
+
+Tous les jours, que ce soit dans la presse écrite ou télévisée, vous n'avez pas échappé au graphique de l'évolution du nombre de cas et de décès. Ici non plus... 
+
+```{r graphic1}
+# Premier graphique : évolution dans le temps du nombre cumulé de cas/décès
+highchart() %>%
+  hc_plotOptions(column = list(stacking = "normal")) %>%
+  hc_chart(type="column") %>%
+  hc_add_series(name="Décès", data = covid$deces) %>%
+  hc_add_series(name="Cas", data = covid$cas) %>%
+  hc_xAxis(categories = covid$date) 
+```
+
+## Un deuxièmes graphique : évolution des cas et décès par jour
+
+Comme évoqué plus haut, les données sont cumulées : ie que chaque jour, nous avons le nombre total
+de cas et de décès depuis le début de l'épidémie. 
+Ici on va s'intéresser au nombre de cas ou décès nouveaux par jour.
+
+Pour réaliser ce nouveau traitement, il faut donc pour chaque jour soustraire les données de la veille, ce que fait ces quelques lignes supplémentaires.
+
+```{r lag}
+# Calcul du nombre de nouveaux cas/décès par jour
+# car les données sont cumulatives...
+covid$deces_veille <- lag(covid$deces)  # on crée une nouvelle variable avec la valeur du jour précédent
+covid$cas_veille <- lag(covid$cas)
+covid$deces_j <- covid$deces - covid$deces_veille # on soustrait la valeur du jour précédent à la valeur du jour
+covid$cas_j <- covid$cas - covid$cas_veille
+covid <- covid %>%
+  select(-deces_veille,-cas_veille) # on supprime les variables inutiles
+```
+
+Et maintenant la représentation graphique !
+
+```{r graphic2}
+# Deuxième graphique : évolution dans le temps du nombre de cas/décès nouveaux chaque jour
+highchart() %>%
+  hc_plotOptions(column = list(stacking = "normal")) %>%
+  hc_chart(type="column") %>%
+  hc_add_series(name="Décès", data = covid$deces_j) %>%
+  hc_add_series(name="Cas", data = covid$cas_j) %>%
+  hc_xAxis(categories = covid$date) 
+```
+
+## Le code
+
+L'ensemble du code est disponible [ici]().
