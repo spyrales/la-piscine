@@ -1,7 +1,7 @@
 ---
 title: "Quelques graphiques à partir des données COVID19 publiée par CSSEDISandData"
 author: "Stéphane Trainel"
-date: "4/9/2020"
+date: "`r format(Sys.time(),'%d %B %Y')`"
 output: html_document
 ---
 
@@ -115,4 +115,4 @@ highchart() %>%
 
 ## Le code
 
-L'ensemble du code est disponible [ici]().
+L'ensemble du code est disponible [ici](https://github.com/spyrales/la-piscine/tree/master/20200402-COVID19/strainel-graphics).
