@@ -113,6 +113,35 @@ highchart() %>%
   hc_xAxis(categories = covid$date) 
 ```
 
+## Un lissage des données
+
+Certaines séries temporelles peuvent avoir des *irrégularités* liées à la méthode de collecte ; 
+il convient alors de les gommer pour mieux faire ressortir la tendance.
+
+```{r datacvs}
+covid$deces_cvs <- rep(0,nrow(covid))
+lissage <- 7
+for (i in (lissage+1):nrow(covid))
+  covid$deces_cvs[i] <- mean(covid$deces_j[(i-lissage+1):i])
+```
+
+Et maintenant la représentation graphique !
+
+```{r graphic3}
+highchart() %>%
+  hc_add_series(name="Décès", type = "column", data = covid$deces_j) %>%
+  hc_chart(type="line") %>%
+  hc_add_series(name="Décès CVS", type = "line", data = covid$deces_cvs) %>%
+  hc_xAxis(categories = covid$date) 
+```
+
 ## Le code
 
 L'ensemble du code est disponible [ici](https://github.com/spyrales/la-piscine/tree/master/20200402-COVID19/strainel-graphics).
+
+## La prudence
+
+* Site du gouvernement traitant de la crise : https://www.gouvernement.fr/info-coronavirus
+
+* Rappel des gestes barrières 
+![les gestes barrières contre le COVID19](covid19_gestes_barrieres.png)
