@@ -115,14 +115,16 @@ highchart() %>%
 
 ## Un lissage des données
 
-Certaines séries temporelles peuvent avoir des *irrégularités* liées à la méthode de collecte ; 
-il convient alors de les gommer pour mieux faire ressortir la tendance.
+Certaines séries temporelles peuvent avoir des *irrégularités* qui cachent une tendance générale.
+Il est possible de les gommer pour mieux la faire ressortir.
+
+Dans l’exemple suivant, on calcule une **moyenne mobile** sur 7 jours (la fenêtre).
 
 ```{r datacvs}
 covid$deces_cvs <- rep(0,nrow(covid))
-lissage <- 7
-for (i in (lissage+1):nrow(covid))
-  covid$deces_cvs[i] <- mean(covid$deces_j[(i-lissage+1):i])
+fenetre <- 7
+for (i in (fenetre+1):nrow(covid))
+  covid$deces_cvs[i] <- mean(covid$deces_j[(i-fenetre+1):i])
 ```
 
 Et maintenant la représentation graphique !
