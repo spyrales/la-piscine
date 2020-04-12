@@ -13,9 +13,9 @@ Ce dépôt permet à chacun de publier ses réalisations.
 
 ## Le parcours aquatique
 
-* Jeudi 2 avril : [COVID_19](20200402-COVID19/readme.md)
+* Jeudi 2 avril : [COVID_19](20200402-COVID19/readme.md) / deux contributions sont à découvrir : carte et diagrammes en barre
 
-* Jeudi 9 avril :
+* Samedi 12 avril : [NRJ179](20200412-NRJ179/readme.md)
 
 * Jeudi 16 avril :
 
