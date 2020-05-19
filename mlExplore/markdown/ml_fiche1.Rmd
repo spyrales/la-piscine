@@ -1,0 +1,30 @@
+---
+title: "Machine Learning - Fiche 1"
+author: "Gilles"
+date: "02/05/2020"
+output: html_document
+---
+
+### Précision et Rappel
+
+La précision est le nombre de **V**rais **P**ositifs ramenés à l'ensemble de tout ce qui est noté positif par le modèle (VP+FP)  
+Les FP sont du bruit. Ils diminuent quand la **Précision** augmente.  
+
+$$Précision=\frac {VP} {FP+VP}$$
+
+Le rappel (ou *sensibilité* en statistique) est le nombre de Vrais Positifs ramenés à l'ensemble de tout ce qui doit devrait être noté positif par le modèle (VP+FN)  
+Les **F**aux **N**égatifs manquent à l'appel : ils diminuent quand le **Rappel** augmente
+
+$$Rappel=\frac {VP} {FP+FN}$$
+
+
+On peut s'amuser a calculer la F-mesure (ou *F-score*) qui n'est rien d'autre que la moyenne harmonique des 2 quantités qui nous intéresse
+
+$$F_{score}=2\frac{précision.rappel}{précision+rappel}$$
+
+Pour donner plus ou moins d'importance à la précision par rapport au rappel, on introduit le paramètre $\beta$ comme suit :
+
+$$F_\beta=(1+\beta^2)\frac{précision.rappel}{\beta^2précision+rappel}$$
+
+On retrouve bien sûr $F_{score}$ en prenant $\beta=1$
+

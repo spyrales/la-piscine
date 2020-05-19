@@ -1,0 +1,15 @@
+---
+title: "Random Forest"
+author: "Gilles"
+date: "14/05/2020"
+output: html_document
+---
+
+# Random Forest
+
+Petit résumé de la technique tel que présenté par l'équipe de [DataScientest](htpp://www.datascientest.com)
+
+Les algorithmes de forêts aléatoires sont un cas particulier du Bagging appliqué aux arbres de décision (CART).
+En plus du principe de Bagging, les forêts aléatoires ajoutent de l'aléa au niveau des variables. Pour chaque arbre on sélectionne un sous-échantillon par bootstrap d'individus et à chaque étape, la construction d'un noeud de l'arbre se fait sur un sous-ensemble de variables tirées aléatoirement.
+
+Le principe de fonctionnement des forêts aléatoire est simple : de nombreux petits arbres de classification sont produits sur une fraction aléatoire de données. Random Forest fait ensuite voter ces arbres de classification peu corrélés afin de déduire l'ordre et l'importance des variables explicatives.
